@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trade Activated</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00cc00;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://raw.githubusercontent.com/demigodhitr/Webpage-images/main/logo.png" alt="Logo">
+        </div>
+        <h1>Congratulations! Your Trade Has Been Activated</h1>
+        <p>Dear {{ userprofile.user.firstname }},</p>
+        <p>We are pleased to inform you that your trade has been successfully activated and <strong>{{ userprofile.account_manager }}</strong> has been assigned to manage your trade for the current session. you can continously track your trade progress by logging into your purse account, navigate to Activities >>Account Report >> Trade Report .</p>
+        <p>for reference, review the trade details below. </p>
+        <ul>
+            <li><strong>Initial capital: </strong> £ {{ userprofile.deposits }}</li><br>
+            <li><strong>Trade Status: </strong> Active</li>
+            <li><strong>Assigned Account Manager: </strong> {{ userprofile.account_manager }}</li>
+            <li><strong>Estimated daily growth: 0.64% </strong></li>
+        </ul>
+        <p>Thank you for choosing our service!</p>
+        <p>Best Regards,</p>
+        <p>The Finance Team</p>
+        <p><a href="https://app.equinoxtraders.com">Equinox Traders LTD</a></p>
+    </div>
+</body>
+
+</html>

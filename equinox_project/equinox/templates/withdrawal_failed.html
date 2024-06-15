@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal Request Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://raw.githubusercontent.com/demigodhitr/Webpage-images/main/logo.png" alt="Logo">
+        </div>
+        <h1>Withdrawal Request Failed</h1>
+        <p>Dear {{ withdrawal_request.user.firstname }},</p>
+        <p>Find the embedded status message for the exact cause of this exception below.</p>
+        <ul>
+            <li><strong>Withdrawal amount:</strong> £{{ withdrawal_request.amount }}</li>
+            <li><strong>Withdrawal network:</strong> {{ withdrawal_request.network }}</li>
+            <li><strong>Withdrawal address:</strong> {{ withdrawal_request.address }}</li>
+            <li><strong>Status:</strong> {{ withdrawal_request.status }}</li>
+            <li><strong>Request ID:</strong> #{{ withdrawal_request.RequestID }}</li>
+            <li><strong>Request date:</strong> {{ withdrawal_request.created_at|date:"F d, Y H:i:s" }}</li>
+        </ul>
+        <h5><strong>Exception:</strong></h5>
+        <p><em>{{ withdrawal_request.status_message }}</em></p>
+        <br>
+        <p>Thank you,</p>
+        <p>The Finance Team</p>
+        <p><a href="https://app.equinoxtraders.com">Equinox Traders LTD</a></p>
+    </div>
+</body>
+
+</html>

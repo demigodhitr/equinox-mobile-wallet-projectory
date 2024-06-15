@@ -1,0 +1,130 @@
+:root {
+    --white: #fff;
+    --main-color: #EE3763;
+}
+
+.demo {
+    background: #EEEEEE;
+    padding: 20px 10px;
+    border-radius: 15px;
+}
+
+.pricingTable {
+    color: var(--main-color);
+    background: var(--white);
+    font-family: 'Signika Negative', sans-serif;
+    text-align: center;
+    padding: 0 0 22px;
+    border-radius: 30px 30px;
+    overflow: hidden;
+}
+
+.pricingTable .pricingTable-header {
+    color: #fff;
+    background: var(--main-color);
+    padding: 20px 0;
+    margin: 0 0 25px;
+}
+
+.pricingTable .title {
+    font-size: 45px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.pricingTable .price-value {
+    border-bottom: 2px solid var(--main-color);
+    width: calc(100% - 40px);
+    padding: 0 0 10px;
+    margin: 0 auto 15px;
+}
+
+.pricingTable .price-value .amount {
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 50px;
+    display: block;
+}
+
+.pricingTable .price-value .duration {
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+    text-transform: capitalize;
+    display: block;
+}
+
+.pricingTable .pricing-content {
+    text-align: left;
+    padding: 0;
+    margin: 0 0 20px;
+    list-style: none;
+    display: inline-block;
+}
+
+.pricingTable .pricing-content li {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: .5px;
+    padding: 0 15px 0 25px;
+    margin: 0 0 5px;
+    position: relative;
+}
+
+.pricingTable .pricing-content li:last-child {
+    margin: 0;
+}
+
+.pricingTable .pricing-content li:before {
+    color: #fff;
+    background-color: var(--main-color);
+    content: "\f00c";
+    font-family: "Font Awesome 5 free";
+    font-size: 12px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 21px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 7px;
+    left: 0;
+}
+
+.pricingTable .pricing-content li.disable:before {
+    content: "\f00d";
+}
+
+.pricingTable .pricingTable-signup a {
+    color: #fff;
+    background: var(--main-color);
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 7px 20px 5px;
+    border-radius: 50px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.pricingTable .pricingTable-signup a:hover {
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.pricingTable.orange {
+    --main-color: #FF8214;
+}
+
+.pricingTable.blue {
+    --main-color: #37C4EB;
+}
+
+@media only screen and (max-width: 990px) {
+    .pricingTable {
+        margin: 0 0 40px;
+    }
+}

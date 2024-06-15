@@ -1,0 +1,289 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Register a service worker hosted at the root of the
+            // site using the default scope.
+            navigator.serviceWorker.register('{% static "sw.js" %}').then(function (registration) {
+                console.log('Service worker registration succeeded:', registration);
+            }, /*catch*/ function (error) {
+                console.log('Service worker registration failed:', error);
+            });
+        } else {
+            console.log('Service workers are not supported.');
+        }
+    </script>
+    <style>
+
+
+        h1,
+        h2 {
+            color: #666;
+            /* Medium gray for headings */
+        }
+
+        .container {
+            margin-top: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            /* White container background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            border-bottom: 1px solid #ccc;
+            /* Light gray underline for section headers */
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            line-height: 1.6;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+        .header{
+            margin-bottom: 50px;
+        }
+    </style>
+    </style>
+    <meta charset="utf-8">
+    <meta name="description" content="Nextcoin">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <title> Equinox Mobile </title>
+    <!-- Google font file -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900" rel="stylesheet">
+    <!-- Favicon-->
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'img/touch/homescreen96.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/touch/homescreen144.png' %}">
+    <link rel="apple-touch-icon" sizes="168x168" href="{% static 'img/touch/homescreen168.png' %}">
+    <link rel="apple-touch-icon" sizes="192x192" href="{% static 'img/touch/homescreen192.png' %}">
+    <!-- imported sheets -->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/bootstrap-icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/pricings.css' %}">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{% static 'css/jquery.jConveyorTicker.min.css' %}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+    <!-- Web App Manifest-->
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="content-header d-flex align-items-center justify-content-between">
+            <div class="navbar-btn">
+                <a href="javascript:history.back()">
+                    <svg version="1.1" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                        viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+                        <path d="M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12
+                    			C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084
+                    			c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864
+                    			l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <h1 style="opacity: 0.6;" >Terms and Conditions / Privacy Policy</h1>
+        </header>
+
+        <section class="section">
+            <h2>Terms and Conditions</h2>
+            <h5 class="">1.Information Collection and Use</h5>
+            <ol type="a">
+                <p>
+                    While using our site, we may ask you to provide us with certain personally identifiable information that can be
+                    used to contact or identify you. Personally identifiable information may include but is not limited to:
+                    <ol type="i">
+                        <li>
+                            <p>Device Name;</p>
+                        </li>
+                        <li>
+                            <p>Device Unique Identifier;</p>
+                        </li>
+                        <li>
+                            <p>contact information;</p>
+                        </li>
+                        <li>
+                            <p>Device details (those made available by your browser/device);</p>
+                        </li>
+                    </ol>
+                </p>
+            </ol>
+            <h4 class="">2. Device Log Data</h4>
+            <p>
+                Like many site operators, we collect information that your browser sends whenever you visit our site ("Log Data").
+                This Log Data may include but is not limited to information such as:
+            <ol type="I">
+                <li>
+                    <p>your computer's Internet Protocol ("IP") address</p>
+                </li>
+                <li>
+                    <p>the time and date of your visit.</p>
+                </li>
+                <li>
+                    <p>Browser type, version</p>
+                </li>
+                <li>
+                    <p>the pages of our site that you visit</p>
+                </li>
+                <li>
+                    <p>the time spent on those pages, and other statistics.</p>
+                </li>
+            </ol>
+            </p>
+                            <h4 class="">3. Cookies & other browser informations.</h4>
+                <p>
+                    We employ the use of cookies very strictly. By using our website or app, you consent to the use of cookies in accordance with our privacy policy. Most interactive websites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate/advertising partners may also use cookies.
+                </p>
+
+                <h4 class="">4. User Verification</h4>
+                <p>
+                   As a forex investment broker, we are committed to adhering to regulatory requirements. Users from the United States are subject to additional verification processes in line with laws and regulations set forth by the relevant regulatory bodies. This may include the submission of additional documentation to ensure compliance with legal obligations.
+                </p>
+                <h4 class="">5. Security</h4>
+                <p>
+                    We take the security of our website seriously. Any unauthorized attempts to upload or change information, or otherwise
+                    cause damage to this service, are strictly prohibited and may be punishable under applicable law.
+                <br>
+                    By using Our website, you agree that we may collect and process your personal information as described.
+                </p>
+                                    <h4 class=""> 6. Services and Fees</h4>
+                    <p class="">
+                        Our fee structures are transparent and pocket friendly. We demand fees for some of our core services to cover service costs. this includes but is not limited to:</p>
+                    <ol type="i">
+                        <li><p><strong>Trading fees.</strong>
+                            Payable at the end of a user's trade successful completion.</p></li>
+                        <li>
+                            <p><strong>Crypto card activation.</strong>
+                            We have now implemented a direct network withdrawal which utilizes 3D payments to process transactions.With our crypto card, withdrawals are automatically confirmed by on the network and are swift. This card is
+                            required for withdrawal related activities. To activate a card, We will request a payment of £1,000.00 only for activation fee. a minimum activation amount of £1,000 is also applicable (for Micro-plans). Crypto Card minimum balance is dependent on user's investment plan. Liaise with your account manager or support team for more info. Investors might not be able to make withdrawals if at least one card is not activated in their account.</p>
+                        </li>
+                        <li>
+                            <p><strong>Other fees.</strong>
+                            We will always publicly communicate changes in our fees structures and any changes or updates made will be made to each user on the system. you can check this page time to time to stay updated on the latest updates
+                            from the company.</p>
+                        </li>
+                
+                    </ol>
+                    <p class="">
+                        Overall, our service fees covers the exceptional services and expertise our team provides throughout our trading process, this fees helps up maintain consistency in our services. Also serves as our contingency plan for any unforeseen losses during the trade. This fee cannot be debited from your account due to account gateway keys encryption, which only
+                        authorised account holder can access. this feature is implementd in line with requirements and regulations set
+                        forth by the regulatory Apex body. The Financial Conduct Authority (F.C.A), United Kingdom.
+                    </p>
+        </section>
+
+        <section id="policy-section" class="section">
+            <h2>Privacy Policies / User Data Integrity.</h2>
+            <p class="mb-0 color-highlight font-12 bottom-10">Modified on 10 January, 2023</p>
+            <p>
+                Here, we provide transparent informations about our privacy policies and how we prioritize user data integrity.
+            </p>
+            <div class="content">
+                <h4 class="mb-0">
+                    1. How we collect these informations.
+                </h4>
+                <p>
+                    When you visit our Site, we automatically collect certain information about your device, including information
+                    about your web browser, IP address, time zone, and some of the cookies that are installed on your device.
+                    Additionally, as you browse the Site, we collect information about the individual web pages or products that you
+                    view, what websites or search terms referred you to the Site, and information about how you interact with the
+                    Site. We refer to this automatically-collected information as "Device Information."
+            
+                <h5 class="mb-0">2. We collect this informations using.</h5>
+                <ol type="a">
+                    <li>
+                        <p>
+                            <strong>Cookies</strong>
+                        </p>
+                        <p>
+                            Cookies are small files that a site or its service provider transfers to your computer's hard drive
+                            through your Web browser (if you allow) that enables the site's or service provider's systems to
+                            recognize your browser and capture and remember certain information. For instance, we may use cookies to
+                            help us remember and process your consent to the terms outline herein.
+                        </p>
+                    </li>
+                </ol>
+                </p>
+                <h4 class="mb-0">
+                    3. How we use these informations.
+                </h4>
+                <p class="">
+                    We use the Device Information that we collect to help us screen for potential risk and fraud (in particular,
+                    your IP address), and more generally to improve and optimize our Site (for example, by generating analytics
+                    about how our customers browse and interact with the Site).
+                </p>
+                <h4 class="mb-0">
+                    4. Sharing your informations.
+                </h4>
+                <p class="">
+                    We do not share your personal information with third parties except as described in this Privacy Policy. We may
+                    share your Device Information with third-party service providers, specifically (Google Analytics) who help us to
+                    analyze our Site traffic and usage data. These service providers may have access to your Device Information only
+                    to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose. These
+                    informations do not expose any of your personal information or credentials provided during registration.
+                </p>
+                <h4 class="mb-0">
+                    5. Your Rights.
+                </h4>
+                <p class="">
+                    If you are a European resident, you have the right to access personal information we hold about you and to ask
+                    that your personal information be corrected, updated, or deleted. If you would like to exercise this right,
+                    please contact our support team..
+                </p>
+                <h4 class="mb-0">
+                    6. Changes to these privacy policies.
+                </h4>
+                <p class="">
+                    We may update this Privacy Policy from time to time in order to reflect, for example, changes to our practices
+                    or for other operational, legal, or regulatory reasons.
+                </p>
+                <h4 class="">7. Contact Information</h4>
+                <p class="">
+                    If you have any questions or concerns about these terms and conditions, please contact us through our
+                    <a href="mailto:support@equinoxtraders.com">SUPPORT MAIL</a>.
+                    Thank you for choosing Equinox Traders!
+                </p>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Equinox Traders. All rights reserved.</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>

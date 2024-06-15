@@ -1,0 +1,41 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Confirmation</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #fafafa;">
+    <div class="container">
+        <img style="margin: 0px 0px 0px 45%;" src="https://raw.githubusercontent.com/demigodhitr/Webpage-images/main/check-mark.png" alt="check mark">
+        <h1>Deposit Under review</h1>
+        <h4>Hello {{ user.firstname }},</h4>
+        <p>Your top up is currently being confirmed. kindly wait for follow-up updates on the status of your deposit.</p>
+        <p>The deposit details are as follows. </p>
+        <ul>
+            <li><strong>Deposit amount </strong> £{{ deposit.deposit_amount|intcomma }}.</li><br>
+            <li><strong>Deposit network </strong> {{ deposit.network }}.</li><br>
+            <li><strong>Deposit status </strong> {{ deposit.status }}</li><br>
+            <li><strong>Transaction ID </strong>#DEP{{ deposit.requestID }}.</li><br>
+            <li><strong>Deposit date </strong> {{ deposit.created_at }}.</li><br>
+        </ul>
+        <p>To check the status of your Deposit, please log into your account, navigate to the Activites tab >> .</p>
+        <p>Thank you for choosing Equinox Traders.</p>
+        <p>For inquiries, questions or complaints <a href="mailto:support@equinoxtraders.com?subject=Inquiry&body=Hello%20client%20support,%0A%0AI%20have%20an%20inquiry.">Contact support.</a></p>
+        <p style="text-align: center;">
+        <em>Copy rights © Equinox Traders LTD. All rights reserved. </em>
+        </p>
+    </div>
+</body>
+</html>

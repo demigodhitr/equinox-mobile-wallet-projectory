@@ -1,0 +1,57 @@
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff0000;
+        }
+        
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="https://raw.githubusercontent.com/demigodhitr/Webpage-images/main/logo.png" alt="Logo">
+    </div>
+    <h1>Deposit Failed</h1>
+    <p>Dear {{ deposit.user.username }},</p>
+    <p>We regret to inform you that your recent payment attempt has failed.</p>
+    <p>For reference, please review the deposit submission details below:</p>
+    <ul>
+        <li><strong>Deposit amount </strong> £{{ deposit.deposit_amount|intcomma }}.</li><br>
+        <li><strong>Deposit network </strong> {{ deposit.network }}.</li><br>
+        <li><strong>Deposit status </strong> {{ deposit.status }}</li><br>
+        <li><strong>Transaction ID </strong>#DEP{{ deposit.requestID }}.</li><br>
+        <li><strong>Deposit date </strong> {{ deposit.created_at }}.</li><br>
+    </ul>
+    <h5><strong>Important Message:</strong></h5>
+    <p><em>{{ deposit.status_message }}</em></p>
+    <br>
+    <p>Thank you;</p>
+    <p>The Finance Team</p>
+    <p><a href="https://app.equinoxtraders.com">Equinox Traders LTD</a></p>
+</div>
+
+</body>
+
+</html>

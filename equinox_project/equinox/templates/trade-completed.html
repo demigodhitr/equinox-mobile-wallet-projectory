@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Trade Has Been Completed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #00cc00;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="https://raw.githubusercontent.com/demigodhitr/Webpage-images/main/logo.png" alt="Logo">
+        </div>
+        <h1>Congratulations Investor !!</h1>
+        <p>Dear {{ userprofile.user.firstname }},</p>
+        <p>We are pleased to inform you that your trade has been successfully completed and earnings settled in your Purse account. you may login to confirm</p>
+        <p>For reference, review your completed trade details below:</p>
+        <!-- Trade details -->
+        <ul>
+            <li><strong>Initial Capital: </strong>£{{ userprofile.deposits }}</li><br>
+            <li><strong>Accrued Profits: </strong>£ {{ userprofile.profits }}</li>
+            <li><strong>Trade Status:</strong> Completed</li>
+            <li><strong>Assigned Account Manager:</strong> {{ userprofile.account_manager }}</li>
+        </ul>
+        <p>Thank you for choosing our service!</p>
+        <p>Best Regards,</p>
+        <p>The Finance Team</p>
+        <p><a href="https://app.equinoxtraders.com">Equinox Traders LTD</a></p>
+    </div>
+</body>
+
+</html>

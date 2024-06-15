@@ -1,0 +1,630 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        if ('serviceWorker' in navigator) {
+                // Register a service worker hosted at the root of the
+                // site using the default scope.
+                navigator.serviceWorker.register('{% static "sw.js" %}').then(function (registration) {
+                    console.log('Service worker registration succeeded:', registration);
+                }, /*catch*/ function (error) {
+                    console.log('Service worker registration failed:', error);
+                });
+            } else {
+                console.log('Service workers are not supported.');
+            }
+    </script>
+    <style>
+        .main-title {
+            text-align: center;
+        }
+        .typing {
+            display: inline-block;
+            border-right: 0.15em solid #000;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: black; }
+        }
+        .blink{
+            animation: blink 0.75s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="description" content="Nextcoin">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="keywords" content="Investent, Crypto, 2025, 2024, HTML, CSS, JavaScript">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>Equinox Mobile </title>
+    <!-- Google font file -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,900" rel="stylesheet">
+    <!-- Favicon-->
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'img/touch/homescreen96.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'img/touch/homescreen144.png' %}">
+    <link rel="apple-touch-icon" sizes="168x168" href="{% static 'img/touch/homescreen168.png' %}">
+    <link rel="apple-touch-icon" sizes="192x192" href="{% static 'img/touch/homescreen192.png' %}">
+    <!-- Stylesheet-->
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/bootstrap-icons.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{% static 'css/jquery.jConveyorTicker.min.css' %}" type="text/css" media="all"/>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all"/>
+    <!-- Web App Manifest-->
+    <link rel="manifest" href="{% static 'manifest.json' %}">
+</head>
+<body>
+<!-- Page loader -->
+<div id="loader-page">
+    <div class="loader" id="line">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- Header Section -->
+<header class="header-main">
+    <div class="container">
+        <div class="content-header d-flex align-items-center justify-content-between">
+            <div class="btn-back">
+                <a href="javascript:history.back()">
+                    <svg version="1.1" width="18" height="18" fill="currentColor"
+                         xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                         viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve">
+                        <path d="M198.608,246.104L382.664,62.04c5.068-5.056,7.856-11.816,7.856-19.024c0-7.212-2.788-13.968-7.856-19.032l-16.128-16.12
+			C361.476,2.792,354.712,0,347.504,0s-13.964,2.792-19.028,7.864L109.328,227.008c-5.084,5.08-7.868,11.868-7.848,19.084
+			c-0.02,7.248,2.76,14.028,7.848,19.112l218.944,218.932c5.064,5.072,11.82,7.864,19.032,7.864c7.208,0,13.964-2.792,19.032-7.864
+			l16.124-16.12c10.492-10.492,10.492-27.572,0-38.06L198.608,246.104z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Section -->
+<main class="main-content">
+    <div class="container">
+        <div class="login-item">
+            <div class="logo-item py-4">
+                <div class="d-flex justify-content-center text-center">
+                    <img src="{% static 'img/logo.png' %}" alt="logo" class="logo-main">
+                </div>
+            </div>
+            <div class="login-card-form">
+                <div style="height: 80px;">
+                    <h4 style="z-index: 1000;; text-align: center;" class="main-title py-4">
+                        <span id="typing-text"></span>
+                    </h4>
+                </div>
+                <!-- <h4  class="main-title py-4">
+                    SAVE <span style="font-weight: 1000;" class="text-primary">|</span> INVEST <span style="font-weight: 1000;" class="text-primary">|</span> TRACK THE MARKET. <br> All in one place
+                </h4> -->
+                <div class="mb-4" style="display: flex; justify-content: center; align-items: center;">
+                    <small>-----Open an account-----</small>
+                </div>
+
+                <form id="registrationForm">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input name="username" class="form-control" type="text" placeholder="Choose a username without spaces">
+                        <small class="color-red-dark">Adding a space between your username may prevent you from accessing your account in the future. Username is case sensitive(Name is not thesame as name)</small>
+
+                    </div>
+                    <div class="form-group">
+                        <input name="email" class="form-control" type="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input name="password1" class="form-control" type="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input name="password2" class="form-control" type="password" placeholder="Confirm Password">
+                    </div>
+
+                    <div class="my-4" style="display: flex; justify-content: center; align-items: center;">
+                        <small >
+                            ---Personal Details ---
+                        </small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <span class="text-primary" >*</span>
+                        <input name="firstname" class="form-control" type="text" placeholder="First Name">
+                    </div>
+
+                    <div class="form-group">
+                        <span class="text-primary">*</span>
+                        <input name="lastname" class="form-control" type="text" placeholder="Last Name">
+                    </div>
+
+                    <div class="form-group">
+                        <span class="text-primary">*</span>
+                        <select class="form-control" name="nationality"
+                            class="form-select rounded-xs" aria-label="Floating label select example">
+                            <option value="" selected disabled>Choose your Country of residence</option>
+                            <option value="united-kingdom">United Kingdom</option>
+                            <option value="united-states">United States</option>
+                            <option value="afghanistan">Afghanistan</option>
+                            <option value="albania">Albania</option>
+                            <option value="algeria">Algeria</option>
+                            <option value="andorra">Andorra</option>
+                            <option value="angola">Angola</option>
+                            <option value="antigua-and-barbuda">Antigua and Barbuda</option>
+                            <option value="argentina">Argentina</option>
+                            <option value="armenia">Armenia</option>
+                            <option value="australia">Australia</option>
+                            <option value="austria">Austria</option>
+                            <option value="azerbaijan">Azerbaijan</option>
+                            <option value="bahamas">Bahamas</option>
+                            <option value="bahrain">Bahrain</option>
+                            <option value="bangladesh">Bangladesh</option>
+                            <option value="barbados">Barbados</option>
+                            <option value="belarus">Belarus</option>
+                            <option value="belgium">Belgium</option>
+                            <option value="belize">Belize</option>
+                            <option value="benin">Benin</option>
+                            <option value="bhutan">Bhutan</option>
+                            <option value="bolivia">Bolivia</option>
+                            <option value="bosnia-and-herzegovina">Bosnia and Herzegovina</option>
+                            <option value="botswana">Botswana</option>
+                            <option value="brazil">Brazil</option>
+                            <option value="brunei">Brunei</option>
+                            <option value="bulgaria">Bulgaria</option>
+                            <option value="burkina-faso">Burkina Faso</option>
+                            <option value="burundi">Burundi</option>
+                            <option value="cabo-verde">Cabo Verde</option>
+                            <option value="cambodia">Cambodia</option>
+                            <option value="cameroon">Cameroon</option>
+                            <option value="canada">Canada</option>
+                            <option value="central-african-republic">Central African Republic</option>
+                            <option value="chad">Chad</option>
+                            <option value="chile">Chile</option>
+                            <option value="china">China</option>
+                            <option value="colombia">Colombia</option>
+                            <option value="comoros">Comoros</option>
+                            <option value="congo-democratic-republic">Congo (Democratic Republic)</option>
+                            <option value="congo-republic">Congo (Republic)</option>
+                            <option value="costa-rica">Costa Rica</option>
+                            <option value="cote-divoire">Côte d'Ivoire</option>
+                            <option value="croatia">Croatia</option>
+                            <option value="cuba">Cuba</option>
+                            <option value="cyprus">Cyprus</option>
+                            <option value="czech-republic">Czech Republic</option>
+                            <option value="denmark">Denmark</option>
+                            <option value="djibouti">Djibouti</option>
+                            <option value="dominica">Dominica</option>
+                            <option value="dominican-republic">Dominican Republic</option>
+                            <option value="east-timor">East Timor (Timor-Leste)</option>
+                            <option value="ecuador">Ecuador</option>
+                            <option value="egypt">Egypt</option>
+                            <option value="el-salvador">El Salvador</option>
+                            <option value="equatorial-guinea">Equatorial Guinea</option>
+                            <option value="eritrea">Eritrea</option>
+                            <option value="estonia">Estonia</option>
+                            <option value="eswatini">Eswatini</option>
+                            <option value="ethiopia">Ethiopia</option>
+                            <option value="fiji">Fiji</option>
+                            <option value="finland">Finland</option>
+                            <option value="france">France</option>
+                            <option value="gabon">Gabon</option>
+                            <option value="gambia">Gambia</option>
+                            <option value="georgia">Georgia</option>
+                            <option value="germany">Germany</option>
+                            <option value="ghana">Ghana</option>
+                            <option value="greece">Greece</option>
+                            <option value="grenada">Grenada</option>
+                            <option value="guatemala">Guatemala</option>
+                            <option value="guinea">Guinea</option>
+                            <option value="guinea-bissau">Guinea-Bissau</option>
+                            <option value="guyana">Guyana</option>
+                            <option value="haiti">Haiti</option>
+                            <option value="honduras">Honduras</option>
+                            <option value="hungary">Hungary</option>
+                            <option value="iceland">Iceland</option>
+                            <option value="india">India</option>
+                            <option value="indonesia">Indonesia</option>
+                            <option value="iran">Iran</option>
+                            <option value="iraq">Iraq</option>
+                            <option value="ireland">Ireland</option>
+                            <option value="israel">Israel</option>
+                            <option value="italy">Italy</option>
+                            <option value="jamaica">Jamaica</option>
+                            <option value="japan">Japan</option>
+                            <option value="jordan">Jordan</option>
+                            <option value="kazakhstan">Kazakhstan</option>
+                            <option value="kenya">Kenya</option>
+                            <option value="kiribati">Kiribati</option>
+                            <option value="korea-north">Korea (North)</option>
+                            <option value="korea-south">Korea (South)</option>
+                            <option value="kosovo">Kosovo</option>
+                            <option value="kuwait">Kuwait</option>
+                            <option value="kyrgyzstan">Kyrgyzstan</option>
+                            <option value="laos">Laos</option>
+                            <option value="latvia">Latvia</option>
+                            <option value="lebanon">Lebanon</option>
+                            <option value="lesotho">Lesotho</option>
+                            <option value="liberia">Liberia</option>
+                            <option value="libya">Libya</option>
+                            <option value="liechtenstein">Liechtenstein</option>
+                            <option value="lithuania">Lithuania</option>
+                            <option value="luxembourg">Luxembourg</option>
+                            <option value="madagascar">Madagascar</option>
+                            <option value="malawi">Malawi</option>
+                            <option value="malaysia">Malaysia</option>
+                            <option value="maldives">Maldives</option>
+                            <option value="mali">Mali</option>
+                            <option value="malta">Malta</option>
+                            <option value="marshall-islands">Marshall Islands</option>
+                            <option value="mauritania">Mauritania</option>
+                            <option value="mauritius">Mauritius</option>
+                            <option value="mexico">Mexico</option>
+                            <option value="micronesia">Micronesia</option>
+                            <option value="moldova">Moldova</option>
+                            <option value="monaco">Monaco</option>
+                            <option value="mongolia">Mongolia</option>
+                            <option value="montenegro">Montenegro</option>
+                            <option value="morocco">Morocco</option>
+                            <option value="mozambique">Mozambique</option>
+                            <option value="myanmar">Myanmar</option>
+                            <option value="namibia">Namibia</option>
+                            <option value="nauru">Nauru</option>
+                            <option value="nepal">Nepal</option>
+                            <option value="netherlands">Netherlands</option>
+                            <option value="new-zealand">New Zealand</option>
+                            <option value="nicaragua">Nicaragua</option>
+                            <option value="niger">Niger</option>
+                            <option value="nigeria">Nigeria</option>
+                            <option value="north-macedonia">North Macedonia</option>
+                            <option value="norway">Norway</option>
+                            <option value="oman">Oman</option>
+                            <option value="pakistan">Pakistan</option>
+                            <option value="palau">Palau</option>
+                            <option value="panama">Panama</option>
+                            <option value="papua-new-guinea">Papua New Guinea</option>
+                            <option value="paraguay">Paraguay</option>
+                            <option value="peru">Peru</option>
+                            <option value="philippines">Philippines</option>
+                            <option value="poland">Poland</option>
+                            <option value="portugal">Portugal</option>
+                            <option value="qatar">Qatar</option>
+                            <option value="romania">Romania</option>
+                            <option value="russia">Russia</option>
+                            <option value="rwanda">Rwanda</option>
+                            <option value="saint-kitts-and-nevis">Saint Kitts and Nevis</option>
+                            <option value="saint-lucia">Saint Lucia</option>
+                            <option value="saint-vincent-and-the-grenadines">Saint Vincent and the Grenadines</option>
+                            <option value="samoa">Samoa</option>
+                            <option value="san-marino">San Marino</option>
+                            <option value="sao-tome-and-principe">São Tomé and Príncipe</option>
+                            <option value="saudi-arabia">Saudi Arabia</option>
+                            <option value="senegal">Senegal</option>
+                            <option value="serbia">Serbia</option>
+                            <option value="seychelles">Seychelles</option>
+                            <option value="sierra-leone">Sierra Leone</option>
+                            <option value="singapore">Singapore</option>
+                            <option value="slovakia">Slovakia</option>
+                            <option value="slovenia">Slovenia</option>
+                            <option value="solomon-islands">Solomon Islands</option>
+                            <option value="somalia">Somalia</option>
+                            <option value="south-africa">South Africa</option>
+                            <option value="south-sudan">South Sudan</option>
+                            <option value="spain">Spain</option>
+                        
+                            <option value="sri-lanka">Sri Lanka</option>
+                            <option value="sudan">Sudan</option>
+                            <option value="suriname">Suriname</option>
+                            <option value="sweden">Sweden</option>
+                            <option value="switzerland">Switzerland</option>
+                            <option value="syria">Syria</option>
+                            <option value="taiwan">Taiwan</option>
+                            <option value="tajikistan">Tajikistan</option>
+                            <option value="tanzania">Tanzania</option>
+                            <option value="thailand">Thailand</option>
+                            <option value="togo">Togo</option>
+                            <option value="tonga">Tonga</option>
+                            <option value="trinidad-and-tobago">Trinidad and Tobago</option>
+                            <option value="tunisia">Tunisia</option>
+                            <option value="turkey">Turkey</option>
+                            <option value="turkmenistan">Turkmenistan</option>
+                            <option value="tuvalu">Tuvalu</option>
+                            <option value="uganda">Uganda</option>
+                            <option value="ukraine">Ukraine</option>
+                            <option value="united-arab-emirates">United Arab Emirates</option>
+                            <option value="uruguay">Uruguay</option>
+                            <option value="uzbekistan">Uzbekistan</option>
+                            <option value="vanuatu">Vanuatu</option>
+                            <option value="vatican-city">Vatican City</option>
+                            <option value="venezuela">Venezuela</option>
+                            <option value="vietnam">Vietnam</option>
+                            <option value="yemen">Yemen</option>
+                            <option value="zambia">Zambia</option>
+                            <option value="zimbabwe">Zimbabwe</option>
+                        </select>
+                    </div>
+
+                    <span class="text-primary">*</span>
+                    <label for="file">Upload a recognizeable 
+                        <span style="font-weight: bold;" class="text-primary">face-only photo</span>
+                    </label>
+                    <div class="mb-5 form-control">
+                        <input id="file" name="picture" type="file" accept="image/*" capture="user">
+                    </div>
+
+                    <div class="mb-5 form-group">  
+                        <input id="consent" name="consent" type="checkbox">
+                        <label for="consent">
+                            I Accept <a href="#" style="font-weight: bolder;" class="text-primary"> Equinox's Terms of service </a>
+                        </label><br>
+                        <small id="consentCheck" style="display: none; font-weight: bold;" class="blink text-danger">Required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <button id="submitButton" class="btn btn-main btn-lg w-100" type="submit">Sign Up</button>
+                        <!-- preloader -->
+                        <div id="requestLoader" style="display: none; justify-content: center; align-items: center;">
+                            <div class="loader" id="line">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>                          
+                        </div>
+                        <small id="blink" style="display: none; font-weight: bold;" class="blink text-danger">You've not completed the form, please check</small>
+                        <!-- ends here --> 
+                    </div>
+                    
+                </form>
+                <div class="text-end my-4">
+                    <div>Already have an account? <a href="{% url 'login' %}" class="fw-bold text-primary">Login</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    <!-- OffCanvas -->
+    <div id="responseCanvas" style="height:200px;" class="offcanvas offcanvas-top rounded-m offcanvas-detached">
+        <div class="d-flex m-3">
+            <div class="align-self-center">
+                <h6 class="text-secondary font-300 mb-0">Response</h6>
+            </div>
+            <div class="align-self-center ms-auto">
+                <a href="#" class="icon icon-xs me-n2" data-bs-dismiss="offcanvas">
+                    <i class="bi bi-x-circle-fill color-yellow-dark font-16"></i>
+                </a>
+            </div>
+        </div>
+        <div class="content mt-0">
+            <h4 id="message" class="text-secondary mb-4">
+    
+            </h4>
+            <br>
+            <a style="min-width: 100%;" href="#" data-bs-dismiss="offcanvas" class="btn btn-main  shadow-bg-xs">Dismiss!</a>
+        </div>
+    </div>
+    <!-- Ends here -->
+    <!-- Verification Offcanvas goes here-->
+    <div id="verification" style=" width:320px" class="offcanvas offcanvas-modal rounded-m offcanvas-detached">
+        <div class="d-flex m-3">
+            <div class="align-self-center">
+                <h5 class="teext-muted font-400 mb-0">Response</h5>
+            </div>
+            <div class="align-self-center ms-auto">
+                <a href="#" class="icon icon-xs me-n2" data-bs-dismiss="offcanvas">
+                    <i class="bi bi-x-circle-fill color-red-dark font-16"></i>
+                </a>
+            </div>
+        </div>
+        <div class="content mt-0">
+            <h4 id="v-msg" class="text-primary mb-4">
+    
+            </h4>
+            <a id="v-btn" style="min-width: 100%;" data-bs-dismiss="offcanvas" class="btn btn-main  shadow-bg-xs">Begin verification!</a>
+        </div>
+    </div>
+    <!-- Verification Offcanvas ends here -->
+    
+<!-- Footer Section-->
+<!-- JQuery library file -->
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.jConveyorTicker.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<!-- <script src="{% static 'js/pwa.js' %}"></script> -->
+
+<!-- Custom Embedded script -->
+<script>
+    // Get csrf token from cookies.
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+        }
+    const csrftoken = getCookie('csrftoken');
+    const preloader = document.getElementById('requestLoader');
+    const submitButton = document.getElementById('submitButton');
+    const form = document.getElementById('registrationForm'); 
+    let feedback = document.getElementById('message');
+    let blinker = document.getElementById('blink');
+    vMsg = document.getElementById('v-msg');
+
+    document.getElementById('consent').addEventListener('change', function(){
+        if (!this.checked){
+            showModal('responseCanvas');
+            document.getElementById('consentCheck').style.display  = 'block';
+        }
+        else{
+            document.getElementById('consentCheck').style.display = 'none';
+        }
+    })
+
+
+    document.getElementById('registrationForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        blinker.style.display = 'none';
+        preloader.style.display = 'flex';
+        submitButton.style.display = 'none';
+        if (!document.getElementById('consent').checked){
+            document.getElementById('consentCheck').style.display = 'block';
+            reset(submitButton, preloader);
+            return false;
+        }
+        const formFields = this.elements;
+        for (var i = 0; i < formFields.length; i++) {
+            if (formFields[i].type !== 'submit' && formFields[i].value === '') {
+                formFields[i].style.border = '2px solid red';
+                formFields[i].style.boxShadow = '1px 2px 20px 1px red';
+                submitButton.style.border = 'none';
+                blinker.style.display = 'block';
+                formFields[i].addEventListener('input', function(e){
+                    this.style.border = 'none';
+                    this.style.boxShadow = 'none';
+                    blinker.style.display = 'none';
+                })
+                reset(submitButton, preloader);
+                return false;
+            } else {
+                formFields[i].style.border = 'none';
+                formFields[i].style.boxShadow = 'none';
+            }
+        }
+        let formData = new FormData(this);
+        let url = '{% url "register" %}';
+        setTimeout(() => {
+            fetch(url, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': csrftoken
+                }
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        console.log(response);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (!data.success) {
+                        if (data.error) {
+                            feedback.innerHTML = data.error;
+                            showModal('responseCanvas');
+                            setTimeout(() => reset(submitButton, preloader), 1250);
+                            return false;
+                        }
+                        else if (data.verify) {
+                            const email = data.email;
+                            var raw_url = '{% url "email_verification" "placeholder" %}'
+                            var url = raw_url.replace('placeholder', email);
+                            document.getElementById('v-btn').addEventListener('click', function () {
+                                window.location.href = url;
+                            })
+                            vMsg.innerHTML = data.verify;
+                            showModal('verification');
+                            setTimeout(() => reset(submitButton, preloader), 1250);
+                            return false;
+                        }
+                    }
+                    else {
+                        feedback.innerHTML = data.success;
+                        feedback.style.color = 'green';
+                        feedback.style.fontWeight = 'bolder';
+                        showModal('responseCanvas');
+                        setTimeout(() => window.location.href = '{% url "home" %}');
+                    }
+                })
+                .catch(error => console.log(error))
+                .finally(() => {
+                    setTimeout(() => reset(submitButton, preloader), 1300);
+                })
+        }, 1200);
+        
+        
+    })
+    
+
+
+    function reset(button, preloader){
+        button.style.display = 'block';
+        preloader.style.display = 'none';
+    }
+
+    function showModal(modalID){
+        el = document.getElementById(modalID);
+        modal = new bootstrap.Offcanvas(el);
+        modal.show();
+    }
+
+
+     const texts = [
+            'SAVE | INVEST | TRADE.  <br>  All in one place'
+        ];
+
+        const typingSpeed = 80; // Typing speed in milliseconds
+        const erasingSpeed = 45; // Erasing speed in milliseconds
+        const delayBetweenTexts = 1300; // Delay between typing and erasing
+
+        let currentText = 0;
+        let currentChar = 0;
+        let isErasing = false;
+        const typingTextElement = document.getElementById('typing-text');
+
+        function type() {
+            const text = texts[currentText];
+            if (!isErasing && currentChar < text.length) {
+                typingTextElement.innerHTML = text.substring(0, currentChar + 1);
+                currentChar++;
+                setTimeout(type, typingSpeed);
+            } else if (isErasing && currentChar > 0) {
+                typingTextElement.innerHTML = text.substring(0, currentChar - 1);
+                currentChar--;
+                setTimeout(type, erasingSpeed);
+            } else if (!isErasing && currentChar === text.length) {
+                setTimeout(() => {
+                    isErasing = true;
+                    setTimeout(type, erasingSpeed);
+                }, delayBetweenTexts);
+            } else if (isErasing && currentChar === 0) {
+                isErasing = false;
+                currentText = (currentText + 1) % texts.length;
+                setTimeout(type, typingSpeed);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(type, delayBetweenTexts);
+        });
+</script>
+</body>
+</html>
