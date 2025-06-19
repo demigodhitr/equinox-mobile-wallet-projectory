@@ -130,11 +130,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # EMAILBACKEND 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.equinoxtraders.com'
+EMAIL_HOST = 'mail.example.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_USE_TLS = False
-EMAIL_HOST_USER = 'alerts@equinoxtraders.com'
-EMAIL_HOST_PASSWORD = 'email@password@2024'
-DEFAULT_FROM_EMAIL = 'alerts@equinoxtraders.com'
-SERVER_EMAIL = 'alerts@equinoxtraders.com'
+EMAIL_HOST_USER = 'alerts@example.com'
+EMAIL_HOST_PASSWORD = 'email@password'
+DEFAULT_FROM_EMAIL = 'alerts@example.com'
+SERVER_EMAIL = 'alerts@example.com'
