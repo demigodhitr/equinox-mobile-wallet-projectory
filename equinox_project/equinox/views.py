@@ -62,7 +62,7 @@ def index(request):
         key=attrgetter('activity_date'),
         reverse=True
     )
-    key = 'CG-ijyB17U95TbbzxurdFzBKi6H'
+    key = 'your-api-key'
 
     gecko_endpoint = 'https://api.coingecko.com/api/v3/coins/markets'
     
@@ -321,7 +321,7 @@ def markets(request):
     dp = profile.profile_pic.url
     notifications = Notifications.objects.filter(user=user, seen=False)
 
-    key = 'CG-ijyB17U95TbbzxurdFzBKi6H'
+    key = 'your-api-key'
 
     gecko_endpoint = 'https://api.coingecko.com/api/v3/coins/markets'
     
@@ -521,7 +521,7 @@ def tradingview(request, coin_id):
 
     headers = {
         "accept": "application/json",
-        "x-cg-api-key": "CG-wsrubTnsaQakvY2oCJNFEyhh"
+        "x-cg-api-key": "your-api-key"
     }
     response = requests.get(url, headers=headers)
     if response and response.status_code == 200:
@@ -685,7 +685,7 @@ def withdrawal(request):
             context = {'user': user, 'amount': amount, 'address': address, 'request_id':request_id, 'network':network, 'status':status}
             html_message = render_to_string('verification_email.html', context)
             plain_message = strip_tags(html_message)
-            from_email = 'alerts@equinoxtraders.com' 
+            from_email = 'alerts@example.com' 
             recipient_list = [user.email]
 
             email = EmailMultiAlternatives(subject, plain_message, from_email,  recipient_list)
@@ -752,7 +752,7 @@ def withdrawal(request):
     subject = f' {UserInfo.username} Just requested to withdraw funds!'
     email_message = f'One of your users "{UserInfo.first_name}, {UserInfo.last_name}" Just submitted a withdrawal request of £{amount}, requesting to withdraw to {network} address: {address}. Request ID: SPK{request_id}. Log into your administrator account to check details'
     from_email = settings.DEFAULT_FROM_EMAIL
-    recipient_list = ['info@equinoxtraders.com']
+    recipient_list = ['info@example.com']
     email = EmailMultiAlternatives(subject, email_message, from_email, recipient_list)
     try:
         email.send()
@@ -941,7 +941,7 @@ def verification(request):
         context = {'user': user, 'status':status}
         html_message = render_to_string('verification_submitted.html', context)
         plain_message = strip_tags(html_message)
-        from_email = 'alerts@myprofitpurse.com' 
+        from_email = 'alerts@example.com' 
         recipient_list = [user.email]
         email = EmailMultiAlternatives(subject, plain_message, from_email, recipient_list)
         email.attach_alternative(html_message, "text/html")
@@ -950,7 +950,7 @@ def verification(request):
         subject = f' {info.first_name} Just submitted verifications documents!'
         email_message = f'{info.first_name} {info.last_name} from {account_info.Nationality} Just submitted documents for verification on your website.  Log in to your administrator account and verify the user\'s request.'
         from_email = 'alerts@myprofitpurse.com' 
-        recipient_list = ['support@myprofitpurse.com']
+        recipient_list = ['support@example.com']
         email = EmailMultiAlternatives(subject, email_message, from_email, recipient_list)
         email.send()
         messages.success(request, 'Verification details submitted successfully. check email or profile for verification status.', extra_tags='verification')
